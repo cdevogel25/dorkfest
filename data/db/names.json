@@ -1,0 +1,59 @@
+{
+  "topside": {
+    "male": [
+      "Quinton",
+      "Arden",
+      "Cordell",
+      "Merill",
+      "Monty",
+      "Wes",
+      "Branden",
+      "Malik",
+      "Willem",
+      "Reid"
+    ],
+    "female": [
+      "Asley",
+      "Vi",
+      "Keva",
+      "Corinne",
+      "Maris",
+      "Alaine",
+      "Amira",
+      "Rosette",
+      "Kalyn",
+      "Elizabeth"
+    ],
+    "last": [
+      "Caldera",
+      "Roeford",
+      "Iordan",
+      "Zahra",
+      "Kingfisher"
+    ]
+  },
+  "arcology": {
+    "male": [
+      "Basil",
+      "Alev",
+      "Hoyt",
+      "Tao",
+      "Yannon",
+      "Alden",
+      "Isaac",
+      "Tycho",
+      "Stanton",
+      "Avery"
+    ],
+    "female": [
+      "test"
+    ],
+    "last": [
+      "test"
+    ]
+  },
+  "home":[
+    "topside",
+    "arcology"
+  ]
+}
