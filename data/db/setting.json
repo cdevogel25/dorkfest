@@ -1,42 +1,58 @@
 {
-  "topside": {
-    "home": {
-      "bedroom": {
-        "back": "nothing",
-        "forward": "nothing",
-        "left": "the hall",
-        "right": "nothing"
-      },
-      "hall": {
-        "back": "the bedroom",
-        "forward": "the stairs",
-        "left": "nothing",
-        "right": "nothing"
-      },
-      "living room": {
-        "back": "the stairs",
-        "left": "the kitchen",
-        "right": "the closet",
-        "forward": "the door"
-      },
-      "kitchen": {
-        "back": "the living room",
-        "forward": "nothing",
-        "left": "nothing",
-        "right": "nothing"
-      },
-      "door": {
-        "back": "the living room",
-        "forward": "the exit",
-        "left": "nothing",
-        "right": "nothing"
-      },
-      "closet": {
-        "back": "the living room",
-        "forward": "nothing",
-        "left": "nothing",
-        "right": "nothing"
+  "XA": {
+    "locations": [
+      "topside", {
+        "id": "1",
+        "name": "your bedroom",
+        "left": null,
+        "right": "2",
+        "back": null,
+        "forward": null,
+        "description": "The room is simple, with a single window facing the street thirty stories below. \nYour bed is covered with a simple grey blanket and a small pillow rests at the head.\nYour closet is closed and a small box fan blows fresh air from the open window."
+      }, {
+        "id": "2",
+        "name": "the hall",
+        "left": "1",
+        "right": null,
+        "back": null,
+        "forward": "3",
+        "description": "The hall is empty, the walls bare except for a single painting of a lighthouse halfway along \nthe left wall. The stairs to the rest of your apartment are at the end of the hall."
+      }, {
+        "id": "3",
+        "name": "the stairs",
+        "left": null,
+        "right": null,
+        "back": "2",
+        "forward": "4"
+      }, {
+        "id": "4",
+        "name": "the living room",
+        "left": "5",
+        "right": "6",
+        "back": "3",
+        "forward": "7"
+      }, {
+        "id": "5",
+        "name": "kitchen",
+        "left": null,
+        "right": null,
+        "back": "4",
+        "forward": null
+      }, {
+        "id": "6",
+        "name": "the closet",
+        "left": null,
+        "right": null,
+        "back": "4",
+        "forward": null
+      }, {
+        "id": "7",
+        "name": "the door",
+        "left": null,
+        "right": null,
+        "back": "4",
+        "forward": "8"
       }
-    }
+    ]
   }
 }
