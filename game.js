@@ -104,5 +104,31 @@ vorpal
     callback()
   })
 
+vorpal
+  .command('stats', 'displays player stats')
+  .action(function(args, cb) {
+    vorpal.log('str: ' + player.str + ', per: ' + player.per + ', end: ' + player.end + ', chr: ' + player.chr + ', int: ' + player.int + ', dex: ' + player.dex)
+    cb()
+  })
+
+vorpal
+  .command('fight')
+  .action(function(args, cb) {
+    const self = this
+    this.prompt({
+      type: 'input',
+      name: 'decide',
+      message: chalk.red.underline('>>') + ' Are you sure? [y/n] ',
+    }, function(result) {
+      if (result.decide === 'y') {
+        self.log('Engage: Fight')
+        cb()
+      } else {
+        self.log('Maybe later?')
+        cb()
+      }
+    })
+  })
+
 //choices
 //dialogue
