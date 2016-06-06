@@ -14,6 +14,8 @@ import {
   dice,*/
 } from './data/lib.js'
 
+let state = null
+
 vorpal
   .delimiter(chalk.cyan.underline('>>'))
   .show()
@@ -32,8 +34,16 @@ let lastName_p = chalk.green(player.nameLast)
 let home_p = chalk.yellow(player.home)
 let location = cell.XA.locations[1]
 
+//player character
 vorpal
-  .command('walk [direction]', 'walk in a direction')
+  .command('player', '***RUN FIRST*** creates character')
+  .action(function(args, callback) {
+    this.log('Your name is ' + firstName_p + ' ' + lastName_p + ', and you are from the ' + home_p)
+    callback()
+  })
+
+vorpal
+  .command('go [direction]', 'walk in a direction')
   .action(function(args, cb) {
     let d = args.direction
     let move = null
@@ -50,20 +60,12 @@ vorpal
     this.log('you walk to ' + chalk.red(location.name))
     cb()
   })
-vorpal
+/*vorpal
   .command('where', 'logs your location')
   .action(function(args, cb) {
     this.log('you are at ' + location.name)
     cb()
-  })
-
-//player character
-vorpal
-  .command('player', 'creates character')
-  .action(function(args, callback) {
-    this.log('Your name is ' + firstName_p + ' ' + lastName_p + ', and you are from the ' + home_p)
-    callback()
-  })
+  })*/
   //look
 vorpal
   .command('look [direction]', 'look at what\'s around you')
@@ -108,6 +110,7 @@ vorpal
   .command('stats', 'displays player stats')
   .action(function(args, cb) {
     vorpal.log('str: ' + player.str + ', per: ' + player.per + ', end: ' + player.end + ', chr: ' + player.chr + ', int: ' + player.int + ', dex: ' + player.dex)
+    vorpal.log('Health: ' + player.heathCur + '/' + player.healthMax)
     cb()
   })
 
@@ -121,13 +124,21 @@ vorpal
       message: chalk.red.underline('>>') + ' Are you sure? [y/n] ',
     }, function(result) {
       if (result.decide === 'y') {
-        self.log('Engage: Fight')
+        self.log('Fight: Start')
+        state === 'fight'
         cb()
       } else {
         self.log('Maybe later?')
         cb()
       }
     })
+  })
+
+vorpal
+  .command('describe', 'describes your surrounding')
+  .action(function(args, cb) {
+    this.log('You are in ' + chalk.red(location.name) + '.\n' + location.description)
+    cb()
   })
 
 //choices
