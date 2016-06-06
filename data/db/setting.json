@@ -1,0 +1,42 @@
+{
+  "topside": {
+    "home": {
+      "bedroom": {
+        "back": "nothing",
+        "forward": "nothing",
+        "left": "the hall",
+        "right": "nothing"
+      },
+      "hall": {
+        "back": "the bedroom",
+        "forward": "the stairs",
+        "left": "nothing",
+        "right": "nothing"
+      },
+      "living room": {
+        "back": "the stairs",
+        "left": "the kitchen",
+        "right": "the closet",
+        "forward": "the door"
+      },
+      "kitchen": {
+        "back": "the living room",
+        "forward": "nothing",
+        "left": "nothing",
+        "right": "nothing"
+      },
+      "door": {
+        "back": "the living room",
+        "forward": "the exit",
+        "left": "nothing",
+        "right": "nothing"
+      },
+      "closet": {
+        "back": "the living room",
+        "forward": "nothing",
+        "left": "nothing",
+        "right": "nothing"
+      }
+    }
+  }
+}
