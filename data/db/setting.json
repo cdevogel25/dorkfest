@@ -57,6 +57,14 @@
         "back": "4",
         "forward": "8",
         "description": "Your door is heavy, with a pair of deadbolts and a chain lock. Your keys hang on a hook to your left."
+      }, {
+        "id": "8",
+        "name": "the building hallway",
+        "left": null,
+        "right": null,
+        "back": "7",
+        "forward": null,
+        "description": "The hallway is empty. Go back."
       }
     ]
   }
