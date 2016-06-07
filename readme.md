@@ -3,7 +3,7 @@
 ____________________
 #Commands:
 
-walk [direction] -> duh
+go [direction] -> duh
 
 where -> tells you what room you're in
 
