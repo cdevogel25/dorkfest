@@ -3,20 +3,16 @@
 ____________________
 #Commands:
 
-walk [direction]
--> duh
+walk [direction] -> duh
 
-where
--> tells you what room you're in
+where -> tells you what room you're in
 
-player
--> creates your character
+player -> creates your character
 
-look [direction]
--> look right, left, forward, or back
+look [direction] -> look right, left, forward, or back
 
-stats
--> shows your stats and health
+stats -> shows your stats and health
 
-fight
--> starts a fight
+fight -> starts a fight
+
+roll -> does a best three/four d6 roll

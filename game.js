@@ -152,7 +152,7 @@ vorpal
   })
 
 vorpal
-  .command('roll', 'rolls d6')
+  .command('roll', 'best three/four d6 roll')
   .action(function(args, cb){
     this.log(attRoll())
     cb()
