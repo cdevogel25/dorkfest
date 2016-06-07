@@ -3,6 +3,8 @@
 var u = require('util')
 var vorpal = require('vorpal')()
 var cell = require('./data/db/setting.json')
+var dialogue = require('./data/db/dialogue.json')
+var dt = dialogue.topside
 const chalk = vorpal.chalk
 import {
   charCreate,
@@ -15,13 +17,14 @@ import {
   attRoll
 } from './data/lib.js'
 
-//let state = 0
+let campaign = 0
+  //let state = 0
 
 vorpal
   .delimiter(chalk.cyan.underline('>>'))
   .show()
 
-u.log('Welcome to untitled. Type "player" ' + chalk.yellow.underline('**once**') + ' to create your character.')
+u.log(dt.a + chalk.yellow.underline('**once**') + dt.b)
 
 /*if (state === 0) {
   vorpal.delimiter(chalk.cyan.underline('>>'))
@@ -49,7 +52,7 @@ let location = cell.XA.locations[1]
 vorpal
   .command('player', chalk.bgCyan.black('***RUN FIRST***') + ' creates character')
   .action(function(args, callback) {
-    this.log('Your name is ' + firstName_p + ' ' + lastName_p + ', and you are from the ' + home_p)
+    this.log(dt.c + firstName_p + ' ' + lastName_p + dt.d + home_p)
     callback()
   })
 
@@ -61,39 +64,41 @@ vorpal
 
     function Lchange() {
       location = cell.XA.locations[move]
+      vorpal.log(dt.e + chalk.red(location.name))
     }
     if (d === 'right') {
       if (location.right != null) {
         move = location.right
         Lchange()
-        vorpal.log('you walk to ' + chalk.red(location.name))
       } else {
-        vorpal.log('You cannot go that way')
+        vorpal.log(dt.f)
       }
     } else if (d === 'left') {
       if (location.left != null) {
         move = location.left
         Lchange()
-        vorpal.log('you walk to ' + chalk.red(location.name))
       } else {
-        vorpal.log('You cannot go that way')
+        vorpal.log(dt.f)
       }
     } else if (d === 'back') {
       if (location.back != null) {
         move = location.back
         Lchange()
-        vorpal.log('you walk to ' + chalk.red(location.name))
       } else {
-        vorpal.log('You cannot go that way')
+        vorpal.log(dt.f)
       }
     } else if (d === 'forward') {
-      if (location.forward != null) {
+      if (location.forward === '8' && campaign === 0) {
+        vorpal.log(dt.g)
+        move = null
+      } else if (location.forward != null) {
         move = location.forward
         Lchange()
-        vorpal.log('you walk to ' + chalk.red(location.name))
       } else {
-        vorpal.log('You cannot go that way')
+        vorpal.log(dt.f)
       }
+    } else {
+      this.log(dt.h)
     }
     //this.log('you walk to ' + chalk.red(location.name))
     cb()
@@ -111,33 +116,34 @@ vorpal
     let d = args.direction
     let a = null
     let look = null
+    let n = 'nothing'
     if (d === 'right') {
       if (location.right != null) {
         a = location.right
         look = cell.XA.locations[a].name
       } else {
-        look = 'nothing'
+        look = n
       }
     } else if (d === 'left') {
       if (location.left != null) {
         a = location.left
         look = cell.XA.locations[a].name
       } else {
-        look = 'nothing'
+        look = n
       }
     } else if (d === 'back') {
       if (location.back != null) {
         a = location.back
         look = cell.XA.locations[a].name
       } else {
-        look = 'nothing'
+        look = n
       }
     } else if (d === 'forward') {
       if (location.forward != null) {
         a = location.forward
         look = cell.XA.locations[a].name
       } else {
-        look = 'nothing'
+        look = n
       }
     }
     this.log(d + ' is ' + look)
@@ -175,7 +181,7 @@ vorpal
 vorpal
   .command('describe', 'describes your surrounding')
   .action(function(args, cb) {
-    this.log('You are in ' + chalk.red(location.name) + '.\n' + location.description)
+    this.log(dt.i + chalk.red(location.name) + '.\n' + location.description)
     cb()
   })
 
@@ -183,6 +189,22 @@ vorpal
   .command('roll', 'rolls d6')
   .action(function(args, cb) {
     this.log(attRoll())
+    cb()
+  })
+
+function stateChange() {
+  campaign = 1
+  return campaign
+}
+vorpal
+  .command('start campaign', 'begins the story. ' + chalk.bgCyan.black('You must be at the door to begin.'))
+  .action(function(args, cb) {
+    if (location != cell.XA.locations[7]) {
+      this.log('Go to the door to start the campaign.')
+    } else {
+      location = cell.XA.locations[8]
+      stateChange()
+    }
     cb()
   })
 

@@ -1,0 +1,13 @@
+{
+  "topside": {
+    "a": "Welcome to untitled. Type \"player\" ",
+    "b": " to create your character.",
+    "c": "Your name is ",
+    "d": ", and you are from the ",
+    "e": "You walk to ",
+    "f": "You cannot go that way.",
+    "g": "You need to \"start campaign\" first.",
+    "h": "That's not a direction.",
+    "i": "You are in "
+  }
+}
