@@ -200,7 +200,7 @@ vorpal
   .command('start campaign', 'begins the story. ' + chalk.bgCyan.black('You must be at the door to begin.'))
   .action(function(args, cb) {
     if (location != cell.XA.locations[7]) {
-      this.log('Go to the door to start the campaign.')
+      this.log(dt.j)
     } else {
       location = cell.XA.locations[8]
       stateChange()
