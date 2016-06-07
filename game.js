@@ -1,6 +1,6 @@
 //g2 v0: June 2 - June X
 
-//var util = require('util')
+var u = require('util')
 var vorpal = require('vorpal')()
 var cell = require('./data/db/setting.json')
 const chalk = vorpal.chalk
@@ -21,6 +21,7 @@ vorpal
   .delimiter(chalk.cyan.underline('>>'))
   .show()
 
+u.log('Welcome to untitled. Type "player" ' + chalk.yellow.underline('**once**') + ' to create your character.')
 
 /*if (state === 0) {
   vorpal.delimiter(chalk.cyan.underline('>>'))
@@ -46,7 +47,7 @@ let location = cell.XA.locations[1]
 
 //player character
 vorpal
-  .command('player', '***RUN FIRST*** creates character')
+  .command('player', chalk.bgCyan.black('***RUN FIRST***') + ' creates character')
   .action(function(args, callback) {
     this.log('Your name is ' + firstName_p + ' ' + lastName_p + ', and you are from the ' + home_p)
     callback()
@@ -152,7 +153,7 @@ vorpal
   })
 
 vorpal
-  .command('roll', 'best three/four d6 roll')
+  .command('roll', 'rolls d6')
   .action(function(args, cb){
     this.log(attRoll())
     cb()

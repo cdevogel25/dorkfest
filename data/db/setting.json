@@ -23,35 +23,40 @@
         "left": null,
         "right": null,
         "back": "2",
-        "forward": "4"
+        "forward": "4",
+        "description": "You know what stairs look like."
       }, {
         "id": "4",
         "name": "the living room",
         "left": "5",
         "right": "6",
         "back": "3",
-        "forward": "7"
+        "forward": "7",
+        "description": "A small couch sits against the far wall to the left of the door. Opposite that is a small\nbut full bookcase, on top of which sits a television. Further left is the entrance to the kitchen.\nThis room is sparse, similar to your bedroom and hall."
       }, {
         "id": "5",
         "name": "kitchen",
         "left": null,
         "right": null,
         "back": "4",
-        "forward": null
+        "forward": null,
+        "description": "Your kitchen is simple but well-equipped, with a hanging pot rack above the island in the center.\nA sliding glass door at the rear leads out to a narrow balcony where your laundry is drying."
       }, {
         "id": "6",
         "name": "the closet",
         "left": null,
         "right": null,
         "back": "4",
-        "forward": null
+        "forward": null,
+        "description": "Inside the closet you find several rain jackets and coats, a pair of atheltic shoes,\nheavy boots, and sandals. On the right wall hangs your bike, and to the rear is the washing machine."
       }, {
         "id": "7",
         "name": "the door",
         "left": null,
         "right": null,
         "back": "4",
-        "forward": "8"
+        "forward": "8",
+        "description": "Your door is heavy, with a pair of deadbolts and a chain lock. Your keys hang on a hook to your left."
       }
     ]
   }
