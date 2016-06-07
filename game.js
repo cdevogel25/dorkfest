@@ -12,13 +12,23 @@ import {
   /*rin,
   rex,
   dice,*/
+  attRoll
 } from './data/lib.js'
 
-let state = null
+//let state = 0
 
 vorpal
   .delimiter(chalk.cyan.underline('>>'))
   .show()
+
+
+/*if (state === 0) {
+  vorpal.delimiter(chalk.cyan.underline('>>'))
+    .show()
+} else if (state === 1) {
+  vorpal.delimiter(chalk.red.underline('>>'))
+    .show()
+}*/
 
 let player = charCreate()
 if (player.home === 'topside') {
@@ -60,12 +70,12 @@ vorpal
     this.log('you walk to ' + chalk.red(location.name))
     cb()
   })
-/*vorpal
-  .command('where', 'logs your location')
-  .action(function(args, cb) {
-    this.log('you are at ' + location.name)
-    cb()
-  })*/
+  /*vorpal
+    .command('where', 'logs your location')
+    .action(function(args, cb) {
+      this.log('you are at ' + location.name)
+      cb()
+    })*/
   //look
 vorpal
   .command('look [direction]', 'look at what\'s around you')
@@ -109,7 +119,7 @@ vorpal
 vorpal
   .command('stats', 'displays player stats')
   .action(function(args, cb) {
-    vorpal.log('str: ' + player.str + ', per: ' + player.per + ', end: ' + player.end + ', chr: ' + player.chr + ', int: ' + player.int + ', dex: ' + player.dex)
+    vorpal.log('str: ' + player.str + ',\nper: ' + player.per + ',\nend: ' + player.end + ',\nchr: ' + player.chr + ',\nint: ' + player.int + ',\ndex: ' + player.dex)
     vorpal.log('Health: ' + player.heathCur + '/' + player.healthMax)
     cb()
   })
@@ -124,8 +134,8 @@ vorpal
       message: chalk.red.underline('>>') + ' Are you sure? [y/n] ',
     }, function(result) {
       if (result.decide === 'y') {
+        //state === 1
         self.log('Fight: Start')
-        state === 'fight'
         cb()
       } else {
         self.log('Maybe later?')
@@ -138,6 +148,13 @@ vorpal
   .command('describe', 'describes your surrounding')
   .action(function(args, cb) {
     this.log('You are in ' + chalk.red(location.name) + '.\n' + location.description)
+    cb()
+  })
+
+vorpal
+  .command('roll', 'rolls d6')
+  .action(function(args, cb){
+    this.log(attRoll())
     cb()
   })
 

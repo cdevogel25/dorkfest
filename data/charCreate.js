@@ -1,7 +1,7 @@
 //charcreate_g2 v1(es6) June 2 - June X
 import {
-  attRoll,
-  rin
+  rin,
+  attRoll
 } from './lib.js'
 
 export function charCreate() {
@@ -18,6 +18,8 @@ export function charCreate() {
     'int': attRoll(),
     'dex': attRoll(),
     'gen': rin(0, 1),
+    'heathCur': 10,
+    'healthMax': 10
   }
     //pick a random home
   pChar.home = _.sample(name.home)
@@ -27,16 +29,16 @@ export function charCreate() {
       pChar.nameFirst = _.sample(name.topside.male)
       pChar.nameLast = _.sample(name.topside.last)
     } else if (pChar.home === 'arcology') {
-      pChar.nameFirst = _.sample(name.arcology.male)
-      pChar.nameLast = _.sample(name.arcology.last)
+      pChar.nameFirst = _.sample(name.topside.male)
+      pChar.nameLast = _.sample(name.topside.last)
     }
   } else if (pChar.gen === 1) {
     if (pChar.home === 'topside') {
       pChar.nameFirst = _.sample(name.topside.female)
       pChar.nameLast = _.sample(name.topside.last)
     } else if (pChar.home === 'arcology') {
-      pChar.nameFirst = _.sample(name.arcology.female)
-      pChar.nameLast = _.sample(name.arcology.last)
+      pChar.nameFirst = _.sample(name.topside.female)
+      pChar.nameLast = _.sample(name.topside.last)
     }
   }
   return pChar

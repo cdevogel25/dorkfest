@@ -1,3 +1,4 @@
+//var u = require('util')
 var ranIn = function(min, max) { //inclusive random integer
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
@@ -33,15 +34,11 @@ export function dice(type) {
     return 'Which die do you want to use?'
   }
 }
+
 export function attRoll() {
-  var one = ranIn(1, 20)
-  var two = ranIn(1, 20)
-  var three = ranIn(1, 20)
-  if (one >= two && one >= three) {
-    return one
-  } else if (two >= one && two >= three) {
-    return two
-  } else if (three >= two && three >= one) {
-    return three
-  }
+  var r = [dice('d6'), dice('d6'), dice('d6'), dice('d6')]
+  r.sort(function(a, b) {
+    return a - b
+  })
+  return r[3] + r[2] + r[1]
 }
