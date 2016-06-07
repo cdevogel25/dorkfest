@@ -58,17 +58,44 @@ vorpal
   .action(function(args, cb) {
     let d = args.direction
     let move = null
-    if (d === 'right') {
-      move = location.right
-    } else if (d === 'left') {
-      move = location.left
-    } else if (d === 'back') {
-      move = location.back
-    } else if (d === 'forward') {
-      move = location.forward
+
+    function Lchange() {
+      location = cell.XA.locations[move]
     }
-    location = cell.XA.locations[move]
-    this.log('you walk to ' + chalk.red(location.name))
+    if (d === 'right') {
+      if (location.right != null) {
+        move = location.right
+        Lchange()
+        vorpal.log('you walk to ' + chalk.red(location.name))
+      } else {
+        vorpal.log('You cannot go that way')
+      }
+    } else if (d === 'left') {
+      if (location.left != null) {
+        move = location.left
+        Lchange()
+        vorpal.log('you walk to ' + chalk.red(location.name))
+      } else {
+        vorpal.log('You cannot go that way')
+      }
+    } else if (d === 'back') {
+      if (location.back != null) {
+        move = location.back
+        Lchange()
+        vorpal.log('you walk to ' + chalk.red(location.name))
+      } else {
+        vorpal.log('You cannot go that way')
+      }
+    } else if (d === 'forward') {
+      if (location.forward != null) {
+        move = location.forward
+        Lchange()
+        vorpal.log('you walk to ' + chalk.red(location.name))
+      } else {
+        vorpal.log('You cannot go that way')
+      }
+    }
+    //this.log('you walk to ' + chalk.red(location.name))
     cb()
   })
   /*vorpal
@@ -154,7 +181,7 @@ vorpal
 
 vorpal
   .command('roll', 'rolls d6')
-  .action(function(args, cb){
+  .action(function(args, cb) {
     this.log(attRoll())
     cb()
   })
