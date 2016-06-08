@@ -18,6 +18,7 @@ import {
   rex,
   dice,*/
   attRoll,
+  vlog
 } from './data/lib.js'
 
 let campaign = 0
@@ -67,38 +68,38 @@ vorpal
 
     function Lchange() {
       location = cell.XA.locations[move]
-      vorpal.log(dt.e + chalk.red(location.name))
+      vlog(dt.e + chalk.red(location.name))
     }
     if (d === 'right') {
       if (location.right != null) {
         move = location.right
         Lchange()
       } else {
-        vorpal.log(dt.f) // ;)
+        vlog(dt.f) // ;)
       }
     } else if (d === 'left') {
       if (location.left != null) {
         move = location.left
         Lchange()
       } else {
-        vorpal.log(dt.f)
+        vlog(dt.f)
       }
     } else if (d === 'back') {
       if (location.back != null) {
         move = location.back
         Lchange()
       } else {
-        vorpal.log(dt.f)
+        vlog(dt.f)
       }
     } else if (d === 'forward') {
       if (location.forward === '8' && campaign === 0) {
-        vorpal.log(dt.g)
+        vlog(dt.g)
         move = null
       } else if (location.forward != null) {
         move = location.forward
         Lchange()
       } else {
-        vorpal.log(dt.f)
+        vlog(dt.f)
       }
     } else {
       this.log(dt.h)
@@ -156,8 +157,8 @@ vorpal
 vorpal
   .command('stats', 'displays player stats')
   .action(function(args, cb) {
-    vorpal.log('str: ' + player.str + ',\nper: ' + player.per + ',\nend: ' + player.end + ',\nchr: ' + player.chr + ',\nint: ' + player.int + ',\ndex: ' + player.dex)
-    vorpal.log('Health: ' + player.heathCur + '/' + player.healthMax)
+    vlog('str: ' + player.str + ',\nper: ' + player.per + ',\nend: ' + player.end + ',\nchr: ' + player.chr + ',\nint: ' + player.int + ',\ndex: ' + player.dex)
+    vlog('Health: ' + player.heathCur + '/' + player.healthMax)
     cb()
   })
 
@@ -246,7 +247,7 @@ vorpal
     function check() {
       for (i; i >= 0; i--) {
         if (cont[i].room === location.name) {
-          vorpal.log(cont[i].name)
+          vlog(cont[i].name)
         }
       }
     }
