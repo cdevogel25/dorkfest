@@ -10,6 +10,7 @@
     "h": "That's not a direction.",
     "i": "You are in ",
     "j": "Go to the door to start the campaign.",
-    "k": "'Which container? (Type \"check\" if you want to see the containers in this room) '"
+    "k": "Which container? (Type \"check\" if you want to see the containers in this room) ",
+    "l": "That item is not in this container."
   }
 }

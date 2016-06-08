@@ -17,7 +17,7 @@ import {
   /*rin,
   rex,
   dice,*/
-  attRoll
+  attRoll,
 } from './data/lib.js'
 
 let campaign = 0
@@ -216,33 +216,30 @@ vorpal
   })
 
 vorpal
-  .command('take [item]', 'duh')
+  .command('take <item> [container]', 'puts items in your inventory')
   .action(function(args, cb) {
-    this.prompt({
-      type: 'input',
-      name: 'check',
-      default: null,
-      message: dt.k
-    }, function(result) {
-      if (result.check === 'check') {
-        check()
-        cb()
-      } else {
-        for (i; i >= 0; i--) {
-          if (cont[i].room === location.name && cont[i].name === result.check) {
-            var b = cont[i].contents.length - 1
-            for (b; b >= 0; b--) {
-              if (cont[i].contents[b] === args.item) {
-                inv.push(args.item)
-                vorpal.log(inv)
-                cb()
-              }
-            }
-          }
+    var isThere = null
+    if (args.container === undefined) {
+      this.prompt({
+        type: 'input',
+        name: 'check',
+        default: null,
+        message: dt.k
+      }, function(result) {
+        isThere = result.check
+        if (result.check === 'check') {
+          check()
+          cb()
+        } else {
+          take()
+          cb()
         }
-      }
-    })
-      //let containers = ph
+      })
+    } else {
+      take()
+      cb()
+    }
+    //let containers = ph
     var i = c.container.length - 1
       //log containers @ current cell IF no container specified
 
@@ -253,11 +250,34 @@ vorpal
         }
       }
     }
+
+    function take() {
+      for (i; i >= 0; i--) {
+        if (cont[i].room === location.name && (cont[i].name === isThere || cont[i].name === args.container)) {
+          var b = cont[i].contents.length - 1
+          for (b; b >= 0; b--) {
+            if (cont[i].contents[b] === args.item) {
+              inv.push(args.item)
+            } else {
+              this.log(dt.l)
+            }
+          }
+        }
+      }
+    }
     //determine if inventory is full
     //remove item from contents array, update .json file? [NOT YET. FOR NOW JUST CREATE ARRAY & UPDATE]
   })
 
+vorpal
+  .command('inv', 'displays your inventory')
+  .action(function(args, cb) {
+    this.log(inv)
+    cb()
+  })
+
 //u.log(location.name)
+
 
 //choices
 //dialogue
