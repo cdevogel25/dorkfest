@@ -16,3 +16,5 @@ stats -> shows your stats and health
 fight -> starts a fight
 
 roll -> does a best three/four d6 roll
+
+take [item] -> copies an item to your inventory, does not delete item from container yet.

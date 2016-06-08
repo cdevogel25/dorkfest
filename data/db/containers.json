@@ -1,37 +1,37 @@
 {
   "container": [{
     "id": "9",
-    "location": "XA.locations[1]",
+    "room": "your bedroom",
     "name": "desk",
-    "contents": []
+    "contents": ["pen"]
   }, {
     "id": "A",
-    "location": "XA.locations[1]",
+    "room": "your bedroom",
     "name": "closet",
     "contents": []
   }, {
     "id": "B",
-    "location": "XA.locations[4]",
+    "room": "the living room",
     "name": "shelf",
     "contents": []
   }, {
     "id": "C",
-    "location": "XA.locations[4]",
+    "room": "the living room",
     "name": "TV shelf",
     "contents": []
   }, {
     "id": "D",
-    "location": "XA.locations[5]",
+    "room": "the kitchen",
     "name": "cabinets",
     "contents": []
   }, {
     "id": "E",
-    "location": "XA.locations[6]",
+    "room": "the closet",
     "name": "closet",
     "contents": []
   }, {
     "id": "F",
-    "location": "XA.locations[7]",
+    "room": "the door",
     "name": "key hook",
     "contents": []
   }]

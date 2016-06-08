@@ -9,6 +9,7 @@
     "g": "You need to \"start campaign\" first.",
     "h": "That's not a direction.",
     "i": "You are in ",
-    "j": "Go to the door to start the campaign."
+    "j": "Go to the door to start the campaign.",
+    "k": "'Which container? (Type \"check\" if you want to see the containers in this room) '"
   }
 }

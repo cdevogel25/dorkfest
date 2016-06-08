@@ -5,6 +5,9 @@ var vorpal = require('vorpal')()
 var cell = require('./data/db/setting.json')
 var dialogue = require('./data/db/dialogue.json')
 var dt = dialogue.topside
+var c = require('./data/db/containers.json')
+var cont = c.container
+var inv = []
 const chalk = vorpal.chalk
 import {
   charCreate,
@@ -71,7 +74,7 @@ vorpal
         move = location.right
         Lchange()
       } else {
-        vorpal.log(dt.f)
+        vorpal.log(dt.f) // ;)
       }
     } else if (d === 'left') {
       if (location.left != null) {
@@ -162,6 +165,7 @@ vorpal
   .command('fight')
   .action(function(args, cb) {
     const self = this
+      //this.delimiter(chalk.red.underline('>>'))
     this.prompt({
       type: 'input',
       name: 'decide',
@@ -171,9 +175,11 @@ vorpal
         //state === 1
         self.log('Fight: Start')
         cb()
+          //this.delimiter(chalk.cyan.underline('>>'))
       } else {
         self.log('Maybe later?')
         cb()
+          //this.delimiter(chalk.cyan.underline('>>'))
       }
     })
   })
@@ -196,6 +202,7 @@ function stateChange() {
   campaign = 1
   return campaign
 }
+
 vorpal
   .command('start campaign', 'begins the story. ' + chalk.bgCyan.black('You must be at the door to begin.'))
   .action(function(args, cb) {
@@ -207,6 +214,50 @@ vorpal
     }
     cb()
   })
+
+vorpal
+  .command('take [item]', 'duh')
+  .action(function(args, cb) {
+    this.prompt({
+      type: 'input',
+      name: 'check',
+      default: null,
+      message: dt.k
+    }, function(result) {
+      if (result.check === 'check') {
+        check()
+        cb()
+      } else {
+        for (i; i >= 0; i--) {
+          if (cont[i].room === location.name && cont[i].name === result.check) {
+            var b = cont[i].contents.length - 1
+            for (b; b >= 0; b--) {
+              if (cont[i].contents[b] === args.item) {
+                inv.push(args.item)
+                vorpal.log(inv)
+                cb()
+              }
+            }
+          }
+        }
+      }
+    })
+      //let containers = ph
+    var i = c.container.length - 1
+      //log containers @ current cell IF no container specified
+
+    function check() {
+      for (i; i >= 0; i--) {
+        if (cont[i].room === location.name) {
+          vorpal.log(cont[i].name)
+        }
+      }
+    }
+    //determine if inventory is full
+    //remove item from contents array, update .json file? [NOT YET. FOR NOW JUST CREATE ARRAY & UPDATE]
+  })
+
+//u.log(location.name)
 
 //choices
 //dialogue
